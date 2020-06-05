@@ -22,10 +22,10 @@ namespace ErlangGod {
         H = 5,
         //% block="Confidence level "
         Confidence = 6,
-        //% block="Object TotalNum"
-        TotalNum = 7,
-        //% block="Object order"
-        Objectorder = 8
+        //% block="Ball TotalNum"
+        BallTotalNum = 7,
+        //% block="Ball order"
+        Ballorder = 8
     }
     /**
     * Status List of Object
@@ -41,10 +41,10 @@ namespace ErlangGod {
         H = 5,
         //% block="Confidence level "
         Confidence = 6,
-        //% block="Object TotalNum"
-        TotalNum = 7,
-        //% block="Object order"
-        Objectorder = 8
+        //% block="Face TotalNum"
+        FaceTotalNum = 7,
+        //% block="Face order"
+        Faceorder = 8
     }
 
     export enum LineState {
@@ -104,9 +104,9 @@ namespace ErlangGod {
                     return (DataBuff[5]);
                 case BallState.Confidence:
                     return (DataBuff[6]);
-                case BallState.TotalNum:
+                case BallState.BallTotalNum:
                     return (DataBuff[7]);
-                case BallState.Objectorder:
+                case BallState.Ballorder:
                     return (DataBuff[8]);
                 default:
                     return 0;
@@ -130,9 +130,9 @@ namespace ErlangGod {
                     return (DataBuff[5]);
                 case FaceState.Confidence:
                     return (DataBuff[6]);
-                case FaceState.TotalNum:
+                case FaceState.FaceTotalNum:
                     return (DataBuff[7]);
-                case FaceState.Objectorder:
+                case FaceState.Faceorder:
                     return (DataBuff[8]);
                 default:
                     return 0;
