@@ -73,13 +73,13 @@ namespace ErlangGod {
         //% block="no road"
         no_road = 8
     }
-    let Cardlabels = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "A", "B", "C", "D", "E", "F", "G", "H",
-        "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z",
-        "black", "blue", "brown", "gray", "green", "orange", "pink", "purple", "red", "rose",
-        "white", "yellow", "hexagon", "pentagon", "quadrilateral", "round", "triangle", "airplane",
+    let NumCardlabels = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9"]
+    let LetterCardlabels = ["A", "B", "C", "D", "E", "F", "G", "H",
+        "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"]
+    let TrafficCardlabels = ["go_ahead", "no_travel", "turn_around", "turn_left", "turn_right"]
+    let OtherCardlabels = ["hexagon", "pentagon", "quadrilateral", "round", "triangle", "airplane",
         "apple", "bread", "car", "cat", "cup", "dog", "egg", "grape", "pear", "ship", "strawberry",
-        "umbrella", "go_ahead", "no_travel", "turn_around", "turn_left", "turn_right"]
-
+        "umbrella"]
 
 
     //% block="Get once data from ElangGod"
@@ -88,10 +88,10 @@ namespace ErlangGod {
     }
     //% block="Recognize the ball"
     export function checkBall(): boolean {
-        if (DataBuff[0]==7) {
+        if (DataBuff[0] == 7) {
             return true
         }
-        else{
+        else {
             return false
         }
 
