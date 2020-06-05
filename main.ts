@@ -187,7 +187,7 @@ namespace ErlangGod {
     //% state.fieldEditor="gridpicker"
     //% state.fieldOptions.columns=3
     //% group="Card"
-    export function CardData(state: FaceState):number{
+    export function CardData(state: FaceState): number {
         if (DataBuff[0] == 2 || DataBuff[0] == 3 || DataBuff[0] == 4 || DataBuff[0] == 5) {
             switch (state) {
                 case FaceState.X:
@@ -211,7 +211,6 @@ namespace ErlangGod {
         else
             return null
     }
-
     //% block="From data Object Line tracking is %state"
     //% state.fieldEditor="gridpicker"
     //% state.fieldOptions.columns=3
@@ -227,5 +226,25 @@ namespace ErlangGod {
         }
         else
             return false
+    }
+    //% block="From data Object tracking state %state"
+    //% state.fieldEditor="gridpicker"
+    //% state.fieldOptions.columns=3
+    //% group="Tracking"
+    export function trackingData(state: LineState): number {
+        if (DataBuff[0] == 8) {
+            switch (state) {
+                case LineState.angel:
+                    return (DataBuff[2]);
+                case LineState.len:
+                    return (DataBuff[3]);
+                case LineState.width:
+                    return (DataBuff[4]);
+                default:
+                    return 0;
+            }
+        }
+        else
+            return null
     }
 }
