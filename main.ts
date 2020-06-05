@@ -5,88 +5,88 @@
 //% groups='["Data", Ball", "Face", "Card", "Tracking", "Color", "Learn"]'
 //% block="ErlangGod"
 namespace ErlangGod {
-    const CameraAdd=0X14;
-    let DataBuff=pins.createBuffer(9);
+    const CameraAdd = 0X14;
+    let DataBuff = pins.createBuffer(9);
     /**
     * Status List of Ball
     */
     export enum BallState {
         //% block="Color"
-        Color=1,
+        Color = 1,
         //% block="X"
-        X=2,
+        X = 2,
         //% block="Y"
-        Y=3,
+        Y = 3,
         //% block="W"
-        W=4,
+        W = 4,
         //% block="H"
-        H=5,
+        H = 5,
         //% block="Confidence level "
-        Confidence=6,
+        Confidence = 6,
         //% block="Ball TotalNum"
-        BallTotalNum=7,
+        BallTotalNum = 7,
         //% block="Ball order"
-        Ballorder=8
+        Ballorder = 8
     }
     /**
     * Status List of Face
     */
     export enum FaceState {
         //% block="X"
-        X=2,
+        X = 2,
         //% block="Y"
-        Y=3,
+        Y = 3,
         //% block="W"
-        W=4,
+        W = 4,
         //% block="H"
-        H=5,
+        H = 5,
         //% block="Confidence level "
-        Confidence=6,
+        Confidence = 6,
         //% block="Face TotalNum"
-        FaceTotalNum=7,
+        FaceTotalNum = 7,
         //% block="Face order"
-        Faceorder=8
+        Faceorder = 8
     }
 
     export enum LineState {
         //% block="angel"
-        angel=1,
+        angel = 1,
         //% block="width"
-        width=2,
+        width = 2,
         //% block="len"
-        len=3
+        len = 3
     }
     export enum LineList {
         //% block="forward"
-        forward=0,
+        forward = 0,
         //% block="left front"
-        left_fromt=1,
+        left_fromt = 1,
         //% block="right front"
-        right_fromt=2,
+        right_fromt = 2,
         //% block="left turn"
-        left_turn=3,
+        left_turn = 3,
         //% block="right turn"
-        right_turn=4,
+        right_turn = 4,
         //% block="T-junction"
-        T_junction=5,
+        T_junction = 5,
         //% block="intersection"
-        intersection=6,
+        intersection = 6,
         //% block="no road"
-        no_road=8
+        no_road = 8
     }
-    let NumCardlabels=["0", "1", "2", "3", "4", "5", "6", "7", "8", "9"]
-    let LetterCardlabels=["A", "B", "C", "D", "E", "F", "G", "H",
+    let NumCardlabels = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9"]
+    let LetterCardlabels = ["A", "B", "C", "D", "E", "F", "G", "H",
         "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"]
-    let TrafficCardlabels=["go_ahead", "no_travel", "turn_around", "turn_left", "turn_right"]
-    let OtherCardlabels=["hexagon", "pentagon", "quadrilateral", "round", "triangle", "airplane",
+    let TrafficCardlabels = ["go_ahead", "no_travel", "turn_around", "turn_left", "turn_right"]
+    let OtherCardlabels = ["hexagon", "pentagon", "quadrilateral", "round", "triangle", "airplane",
         "apple", "bread", "car", "cat", "cup", "dog", "egg", "grape", "pear", "ship", "strawberry",
         "umbrella"]
 
 
     //% block="Get once data from ElangGod"
-    //% weight=96  group="Data"
+    //% group="Data"
     export function cameraData(): void {
-        DataBuff=pins.i2cReadBuffer(0x14, 9)
+        DataBuff = pins.i2cReadBuffer(0x14, 9)
     }
     //% block="Recognize the ball"
     //% group="Ball"
