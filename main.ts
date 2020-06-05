@@ -148,7 +148,7 @@ namespace ErlangGod {
     export function initModel():void{
         
     }
-    //% block="Enable function func1 %fun1 |func2 %fun2|func3 %fun3"
+    //% block="Enable function | func1 %fun1 ||func2 %fun2|func3 %fun3"
     //% expandableArgumentMode="enabled"
     //% group="Basics"
     export function initfunc(fun1:number,fun2:number=0,fun3:number=0):void{
