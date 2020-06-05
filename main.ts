@@ -12,7 +12,7 @@ namespace ErlangGod {
     */
     export enum FuncList {
         //% block="Card"
-        Card = 1,
+        Card = 2,
         //% block="Face"
         Face = 6,
         //% block="Ball"
