@@ -2,7 +2,7 @@
  * This extension is designed to programme and drive the AICamera ErLang God(二郎神)
  */
 //% weight=0 color=#0031AF icon="\uf06e"
-//% groups='["Ball", "Face", "Card", "Tracking", "Color", "Learn"]'
+//% groups='["Data", Ball", "Face", "Card", "Tracking", "Color", "Learn"]'
 //% block="ErlangGod"
 namespace ErlangGod {
     const CameraAdd=0X14;
@@ -84,7 +84,7 @@ namespace ErlangGod {
 
 
     //% block="Get once data from ElangGod"
-    //% weight=100
+    //% weight=96  group="Data"
     export function cameraData(): void {
         DataBuff=pins.i2cReadBuffer(0x14, 9)
     }
