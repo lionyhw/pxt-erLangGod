@@ -2,7 +2,7 @@
  * This extension is designed to programme and drive the AICamera ErLang God(二郎神)
  */
 //% weight=0 color=#0031AF icon="\uf06e"
-//% groups='["Data", Ball", "Face", "Card", "Tracking", "Color", "Learn"]'
+//% groups='["Data", "Ball", "Face", "Card", "Tracking", "Color", "Learn"]'
 //% block="ErlangGod"
 namespace ErlangGod {
     const CameraAdd = 0X14;
@@ -81,7 +81,6 @@ namespace ErlangGod {
     let OtherCardlabels = ["hexagon", "pentagon", "quadrilateral", "round", "triangle", "airplane",
         "apple", "bread", "car", "cat", "cup", "dog", "egg", "grape", "pear", "ship", "strawberry",
         "umbrella"]
-
 
     //% block="Get once data from ElangGod"
     //% group="Data"
