@@ -87,6 +87,8 @@ namespace ErlangGod {
         DataBuff = pins.i2cReadBuffer(0x14, 9)
     }
     //% block="From data Object Ball state %state"
+    //% state.fieldEditor="gridpicker"
+    //% state.fieldOptions.columns=3
     export function Ball(state: BallState): number {
         if (DataBuff[0] == 7) {
             switch (state) {
