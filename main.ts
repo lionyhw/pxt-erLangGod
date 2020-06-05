@@ -125,7 +125,6 @@ namespace ErlangGod {
         //% block="Things order"
         Thingsorder = 8
     }
-
     export enum LineState {
         //% block="angel"
         angel = 1,
