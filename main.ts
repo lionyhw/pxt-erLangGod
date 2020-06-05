@@ -116,7 +116,9 @@ namespace ErlangGod {
             return null
         }
     }
-    //% block="Object Face state %state"
+    //% block="From data Object Face state %state"
+    //% state.fieldEditor="gridpicker"
+    //% state.fieldOptions.columns=3
     export function Face(state: FaceState): number {
         if (DataBuff[0] == 6) {
             switch (state) {
