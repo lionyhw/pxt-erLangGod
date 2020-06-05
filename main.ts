@@ -28,7 +28,7 @@ namespace ErlangGod {
         Ballorder = 8
     }
     /**
-    * Status List of Object
+    * Status List of Face
     */
     export enum FaceState {
         //% block="X"
