@@ -170,11 +170,15 @@ namespace ErlangGod {
     //% block="Object Line tracking is %state"
     //% group="Tracking"
     export function Tracking(state: LineList): boolean {
-        if (DataBuff[4] == state) {
-            return true
+        if (DataBuff[0] == 8) {
+            if (DataBuff[4] == state) {
+                return true
+            }
+            else {
+                return false
+            }
         }
-        else {
+        else
             return false
-        }
     }
 }
