@@ -170,7 +170,6 @@ namespace ErlangGod {
     //% block="Object Line tracking is %state"
     //% group="Tracking"
     export function Tracking(state: LineList): boolean {
-        cameraData();
         if (DataBuff[4] == state) {
             return true
         }
