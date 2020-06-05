@@ -167,9 +167,9 @@ namespace ErlangGod {
             return null
         }
     }
-    //% block="From data Object Card inform"
+    //% block="From data Object Card Name"
     //% group="Card"
-    export function objectCard(state: LineList): string {
+    export function cardName(state: LineList): string {
         switch (DataBuff[0]) {
             case 2:
                 return NumCardlabels[DataBuff[1]]
@@ -182,6 +182,34 @@ namespace ErlangGod {
             default:
                 return "NO Card"
         }
+    }
+    //% block="From data Object Card state %state"
+    //% state.fieldEditor="gridpicker"
+    //% state.fieldOptions.columns=3
+    //% group="Card"
+    export function CardData(state: FaceState):number{
+        if (DataBuff[0] == 2 || DataBuff[0] == 3 || DataBuff[0] == 4 || DataBuff[0] == 5) {
+            switch (state) {
+                case FaceState.X:
+                    return (DataBuff[2]);
+                case FaceState.Y:
+                    return (DataBuff[3]);
+                case FaceState.W:
+                    return (DataBuff[4]);
+                case FaceState.H:
+                    return (DataBuff[5]);
+                case FaceState.Confidence:
+                    return (DataBuff[6]);
+                case FaceState.FaceTotalNum:
+                    return (DataBuff[7]);
+                case FaceState.Faceorder:
+                    return (DataBuff[8]);
+                default:
+                    return 0;
+            }
+        }
+        else
+            return null
     }
 
     //% block="From data Object Line tracking is %state"
