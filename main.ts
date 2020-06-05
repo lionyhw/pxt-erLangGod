@@ -10,6 +10,23 @@ namespace ErlangGod {
     /**
     * Status List of Ball
     */
+    export enum FuncList {
+        //% block="Card"
+        Card = 1,
+        //% block="Face"
+        Face = 6,
+        //% block="Ball"
+        Ball = 7,
+        //% block="Tracking"
+        Tracking = 8,
+        //% block="Color"
+        Color = 9,
+        //% block="Things"
+        Things = 10
+    }
+    /**
+    * Status List of Ball
+    */
     export enum BallState {
         //% block="Color"
         Color = 1,
@@ -67,8 +84,8 @@ namespace ErlangGod {
         Cardorder = 8
     }
     /**
-* Status List of Color
-*/
+    * Status List of Color
+    */
     export enum ColorState {
         //% block="ID"
         ID = 1,
@@ -151,7 +168,7 @@ namespace ErlangGod {
     //% block="Enable function | func1 %fun1 ||func2 %fun2|func3 %fun3"
     //% expandableArgumentMode="enabled"
     //% group="Basics"
-    export function initfunc(fun1:number,fun2:number=0,fun3:number=0):void{
+    export function initfunc(fun1: FuncList, fun2: FuncList = 0, fun3: FuncList=0):void{
 
     }
     //% block="Get once data from ElangGod"
