@@ -84,6 +84,7 @@ namespace ErlangGod {
 
 
     //% block="Get once data from ElangGod"
+    //% weight=100
     export function cameraData(): void {
         DataBuff=pins.i2cReadBuffer(0x14, 9)
     }
