@@ -86,10 +86,20 @@ namespace ErlangGod {
     export function cameraData(): void {
         DataBuff = pins.i2cReadBuffer(0x14, 9)
     }
+    //% block="Recognize the ball"
+    export function checkBall(state: BallState): boolean {
+        if (DataBuff[0]==7) {
+            return true
+        }
+        else{
+            return false
+        }
+
+    }
     //% block="From data Object Ball state %state"
     //% state.fieldEditor="gridpicker"
     //% state.fieldOptions.columns=3
-    export function Ball(state: BallState): number {
+    export function ballData(state: BallState): number {
         if (DataBuff[0] == 7) {
             switch (state) {
                 case BallState.Color:
@@ -119,7 +129,7 @@ namespace ErlangGod {
     //% block="From data Object Face state %state"
     //% state.fieldEditor="gridpicker"
     //% state.fieldOptions.columns=3
-    export function Face(state: FaceState): number {
+    export function faceData(state: FaceState): number {
         if (DataBuff[0] == 6) {
             switch (state) {
                 case FaceState.X:
