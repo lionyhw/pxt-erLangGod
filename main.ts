@@ -87,7 +87,7 @@ namespace ErlangGod {
         DataBuff = pins.i2cReadBuffer(0x14, 9)
     }
     //% block="Recognize the ball"
-    export function checkBall(state: BallState): boolean {
+    export function checkBall(): boolean {
         if (DataBuff[0]==7) {
             return true
         }
