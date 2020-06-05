@@ -167,9 +167,28 @@ namespace ErlangGod {
             return null
         }
     }
-    //% block="Object Line tracking is %state"
+    //% block="From data Object Card inform"
+    //% group="Card"
+    export function objectCard(state: LineList): string {
+        switch (DataBuff[0]) {
+            case 2:
+                return NumCardlabels[DataBuff[1]]
+            case 3:
+                return LetterCardlabels[DataBuff[1]]
+            case 4:
+                return TrafficCardlabels[DataBuff[1]]
+            case 5:
+                return OtherCardlabels[DataBuff[1]]
+            default:
+                return "NO Card"
+        }
+    }
+
+    //% block="From data Object Line tracking is %state"
+    //% state.fieldEditor="gridpicker"
+    //% state.fieldOptions.columns=3
     //% group="Tracking"
-    export function Tracking(state: LineList): boolean {
+    export function lineTracking(state: LineList): boolean {
         if (DataBuff[0] == 8) {
             if (DataBuff[4] == state) {
                 return true
