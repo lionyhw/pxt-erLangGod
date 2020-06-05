@@ -2,7 +2,7 @@
  * This extension is designed to programme and drive the AICamera ErLang God(二郎神)
  */
 //% weight=0 color=#0031AF icon="\uf06e"
-//% groups='["Data", "Ball", "Face", "Card", "Tracking", "Color", "Learn"]'
+//% groups='["Basics", "Ball", "Face", "Card", "Tracking", "Color", "Learn"]'
 //% block="ErlangGod"
 namespace ErlangGod {
     const CameraAdd = 0X14;
@@ -143,8 +143,19 @@ namespace ErlangGod {
         "apple", "bread", "car", "cat", "cup", "dog", "egg", "grape", "pear", "ship", "strawberry",
         "umbrella"]
 
+    //% block="Init model IIC Port"
+    //% group="Basics"
+    export function initModel():void{
+        
+    }
+    //% block="Enable function func1 %fun1 |func2 %fun2|func3 %fun3"
+    //% expandableArgumentMode="enabled"
+    //% group="Basics"
+    export function initfunc(fun1:number,fun2:number=0,fun3:number=0):void{
+
+    }
     //% block="Get once data from ElangGod"
-    //% group="Data"
+    //% group="Basics"
     export function cameraData(): void {
         DataBuff = pins.i2cReadBuffer(CameraAdd, 9)
     }
