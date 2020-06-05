@@ -6,31 +6,26 @@
 namespace ErlangGod {
     const CameraAdd = 0X14;
     let DataBuff = pins.createBuffer(9);
-
     /**
-    * List of Function
+    * Status List of Ball
     */
-    export enum FunctionList {
-        //% block="Ball recognition"
-        Ball = 0x08,
-        //% block="Face recognition"
-        Face = 0x07,
-        //% block="Tracking"
-        Tracking = 0x09,
-        //% block="Color recognition"
-        Color = 0x01,
-        //% block="Number recognition"
-        Number = 0x02,
-        //% block="Letter recognition"
-        Letter = 0x03,
-        //% block="Traffic recognition"
-        Traffic = 0x04,
-        //% block="Shape recognition"
-        Shape = 0x05,
-        //% block="Other recognition"
-        Other = 0x06,
-        //% block="None"
-        None = 0x00
+    export enum BallState {
+        //% block="Color"
+        Color = 1,
+        //% block="X"
+        X = 2,
+        //% block="Y"
+        Y = 3,
+        //% block="W"
+        W = 4,
+        //% block="H"
+        H = 5,
+        //% block="Confidence level "
+        Confidence = 6,
+        //% block="Object TotalNum"
+        TotalNum = 7,
+        //% block="Object order"
+        Objectorder = 8
     }
     /**
     * Status List of Object
@@ -51,27 +46,7 @@ namespace ErlangGod {
         //% block="Object order"
         Objectorder = 8
     }
-    /**
-* Status List of Object
-*/
-    export enum BallState {
-        //% block="ID"
-        ID = 1,
-        //% block="X"
-        X = 2,
-        //% block="Y"
-        Y = 3,
-        //% block="W"
-        W = 4,
-        //% block="H"
-        H = 5,
-        //% block="Confidence level "
-        Confidence = 6,
-        //% block="Object TotalNum"
-        TotalNum = 7,
-        //% block="Object order"
-        Objectorder = 8
-    }
+
     export enum LineState {
         //% block="angel"
         angel = 1,
@@ -115,7 +90,7 @@ namespace ErlangGod {
     export function Ball(state: BallState): number {
         if (DataBuff[0] == 7) {
             switch (state) {
-                case BallState.ID:
+                case BallState.Color:
                     return (DataBuff[1])
                 case BallState.X:
                     return (DataBuff[2]);
