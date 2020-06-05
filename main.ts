@@ -2,6 +2,7 @@
  * This extension is designed to programme and drive the AICamera ErLang God(二郎神)
  */
 //% weight=0 color=#0031AF icon="\uf06e"
+//% groups='["Ball", "Face", "Card"]'
 //% block="ErlangGod"
 namespace ErlangGod {
     const CameraAdd = 0X14;
@@ -87,6 +88,7 @@ namespace ErlangGod {
         DataBuff = pins.i2cReadBuffer(0x14, 9)
     }
     //% block="Recognize the ball"
+    //% group = "Ball"
     export function checkBall(): boolean {
         if (DataBuff[0] == 7) {
             return true
@@ -94,11 +96,11 @@ namespace ErlangGod {
         else {
             return false
         }
-
     }
     //% block="From data Object Ball state %state"
     //% state.fieldEditor="gridpicker"
     //% state.fieldOptions.columns=3
+    //% group = "Ball"
     export function ballData(state: BallState): number {
         if (DataBuff[0] == 7) {
             switch (state) {
@@ -126,9 +128,20 @@ namespace ErlangGod {
             return null
         }
     }
+    //% block="Recognize the face"
+    //% group = "Face"
+    export function checkFace(): boolean {
+        if (DataBuff[0] == 6) {
+            return true
+        }
+        else {
+            return false
+        }
+    }
     //% block="From data Object Face state %state"
     //% state.fieldEditor="gridpicker"
     //% state.fieldOptions.columns=3
+    //% group = "Face"
     export function faceData(state: FaceState): number {
         if (DataBuff[0] == 6) {
             switch (state) {
@@ -154,7 +167,6 @@ namespace ErlangGod {
             return null
         }
     }
-
     //% block="Object Line tracking is %state"
     export function Tracking(state: LineList): boolean {
         cameraData();
@@ -164,7 +176,5 @@ namespace ErlangGod {
         else {
             return false
         }
-
     }
-
 }
