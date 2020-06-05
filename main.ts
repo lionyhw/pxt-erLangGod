@@ -327,7 +327,7 @@ namespace ErlangGod {
     //% block="From data Object Card state %state"
     //% state.fieldEditor="gridpicker"
     //% state.fieldOptions.columns=3
-    //% group="Card"
+    //% group="Color"
     export function colorData(state: ColorState): number {
         if (DataBuff[0] == 9) {
             switch (state) {
@@ -355,7 +355,7 @@ namespace ErlangGod {
             return null
     }
     //% block="learn Things ID %thingsID"
-    //% group="Color"
+    //% group="Learn"
     export function learnThings(thingsID: number): void {
         let thingsBuf = pins.createBuffer(9)
         let timeout = 0
@@ -373,7 +373,7 @@ namespace ErlangGod {
     //% block="From data Object things state %state"
     //% state.fieldEditor="gridpicker"
     //% state.fieldOptions.columns=3
-    //% group="Card"
+    //% group="Learn"
     export function thingsData(state: ThingsState): number {
         if (DataBuff[0] == 9) {
             switch (state) {
