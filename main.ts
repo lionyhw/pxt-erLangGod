@@ -2,7 +2,7 @@
  * This extension is designed to programme and drive the AICamera ErLang God(二郎神)
  */
 //% weight=0 color=#0031AF icon="\uf06e"
-//% groups='["Basics", "Ball", "Face", "Card", "Tracking", "Color", "Learn"]'
+//% groups='["Basics", "Ball", "Face", "Card", "Color", "Tracking", "Learn"]'
 //% block="ErlangGod"
 namespace ErlangGod {
     const CameraAdd = 0X14;
@@ -83,6 +83,25 @@ namespace ErlangGod {
         //% block="Card order"
         Cardorder = 8
     }
+        /**
+    * Status List of Color
+    */
+    export enum ColorState {
+        //% block="X"
+        X = 2,
+        //% block="Y"
+        Y = 3,
+        //% block="W"
+        W = 4,
+        //% block="H"
+        H = 5,
+        //% block="Confidence level "
+        Confidence = 6,
+        //% block="Color TotalNum"
+        ColorTotalNum = 7,
+        //% block="Color order"
+        Colororder = 8
+    }
 
     export enum LineState {
         //% block="angel"
@@ -117,6 +136,7 @@ namespace ErlangGod {
     let OtherCardlabels = ["hexagon", "pentagon", "quadrilateral", "round", "triangle", "airplane",
         "apple", "bread", "car", "cat", "cup", "dog", "egg", "grape", "pear", "ship", "strawberry",
         "umbrella"]
+    let ColorList = ["black", "blue", "brown", "green", "orange", "pink", "purple", "red", "rose", "white", "yellow"]
 
     //% block="Init model IIC Port"
     //% group="Basics"
@@ -219,13 +239,13 @@ namespace ErlangGod {
     export function cardName(state: LineList): string {
         switch (DataBuff[0]) {
             case 2:
-                return NumCardlabels[DataBuff[1]]
+                return NumCardlabels[DataBuff[1]-1]
             case 3:
-                return LetterCardlabels[DataBuff[1]]
+                return LetterCardlabels[DataBuff[1]-1]
             case 4:
-                return TrafficCardlabels[DataBuff[1]]
+                return TrafficCardlabels[DataBuff[1]-1]
             case 5:
-                return OtherCardlabels[DataBuff[1]]
+                return OtherCardlabels[DataBuff[1]-1]
             default:
                 return "NO Card"
         }
@@ -294,34 +314,43 @@ namespace ErlangGod {
         else
             return null
     }
-    //% block="learn color ID %colorID"
+    //% block="From data Object color state %state"
     //% group="Color"
-    export function learnColor(colorID: number): void {
-        let ColorBuf = pins.createBuffer(9)
-        let timeout = 0
-        ColorBuf[0] = 9
-        ColorBuf[1] = colorID
-        pins.i2cWriteBuffer(CameraAdd, ColorBuf)
-        while (timeout > 10000) {
-            cameraData()
-            if (DataBuff[0] == 9 && DataBuff[1] == colorID) {
-                break
+    export function colorData(state: ColorState): number {
+        if (DataBuff[0] == 1) {
+            switch (state) {
+                case ColorState.X:
+                    return DataBuff[2]
+                case ColorState.Y:
+                    return DataBuff[3]
+                case ColorState.W:
+                    return DataBuff[4]
+                case ColorState.H:
+                    return DataBuff[5]
+                case ColorState.Confidence:
+                    return DataBuff[6]
+                case ColorState.ColorTotalNum:
+                    return DataBuff[7]
+                case ColorState.Colororder:
+                    return DataBuff[8]
+                default:
+                    return 0
             }
-            timeout++
         }
-    }
-    //% block="From data Color ID"
-    //% state.fieldEditor="gridpicker"
-    //% state.fieldOptions.columns=3
-    //% group="Color"
-    export function colorData(): number {
-        if (DataBuff[0] == 9) {
-            return DataBuff[1]
-        }
-        else{
+        else {
             return null
         }
-            
+    }
+    //% block="From data Color Name"
+    //% state.fieldEditor="gridpicker"
+    //% group="Color"
+    export function colorName(): string {
+        if(DataBuff[0]==1){
+            return ColorList[DataBuff[1]-1]
+        }
+        else{
+            return "No Color"
+        }
     }
     //% block="learn Things ID %thingsID"
     //% group="Learn"
