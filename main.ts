@@ -83,48 +83,7 @@ namespace ErlangGod {
         //% block="Card order"
         Cardorder = 8
     }
-    /**
-    * Status List of Color
-    */
-    export enum ColorState {
-        //% block="ID"
-        ID = 1,
-        //% block="X"
-        X = 2,
-        //% block="Y"
-        Y = 3,
-        //% block="W"
-        W = 4,
-        //% block="H"
-        H = 5,
-        //% block="Confidence level "
-        Confidence = 6,
-        //% block="Color TotalNum"
-        ColorTotalNum = 7,
-        //% block="Color order"
-        Colororder = 8
-    }
-    /**
-    * Status List of Things
-    */
-    export enum ThingsState {
-        //% block="ID"
-        ID = 1,
-        //% block="X"
-        X = 2,
-        //% block="Y"
-        Y = 3,
-        //% block="W"
-        W = 4,
-        //% block="H"
-        H = 5,
-        //% block="Confidence level "
-        Confidence = 6,
-        //% block="Things TotalNum"
-        ThingsTotalNum = 7,
-        //% block="Things order"
-        Thingsorder = 8
-    }
+
     export enum LineState {
         //% block="angel"
         angel = 1,
@@ -351,42 +310,25 @@ namespace ErlangGod {
             timeout++
         }
     }
-    //% block="From data Object Card state %state"
+    //% block="From data Color ID"
     //% state.fieldEditor="gridpicker"
     //% state.fieldOptions.columns=3
     //% group="Color"
-    export function colorData(state: ColorState): number {
+    export function colorData(): number {
         if (DataBuff[0] == 9) {
-            switch (state) {
-                case ColorState.ID:
-                    return DataBuff[1]
-                case ColorState.X:
-                    return DataBuff[2]
-                case ColorState.Y:
-                    return DataBuff[3]
-                case ColorState.W:
-                    return DataBuff[4]
-                case ColorState.H:
-                    return DataBuff[5]
-                case ColorState.Confidence:
-                    return DataBuff[6]
-                case ColorState.ColorTotalNum:
-                    return DataBuff[7]
-                case ColorState.Colororder:
-                    return DataBuff[8]
-                default:
-                    return 0;
-            }
+            return DataBuff[1]
         }
-        else
+        else{
             return null
+        }
+            
     }
     //% block="learn Things ID %thingsID"
     //% group="Learn"
     export function learnThings(thingsID: number): void {
         let thingsBuf = pins.createBuffer(9)
         let timeout = 0
-        thingsBuf[0] = 9
+        thingsBuf[0] = 10
         thingsBuf[1] = thingsID
         pins.i2cWriteBuffer(CameraAdd, thingsBuf)
         while (timeout > 10000) {
@@ -397,34 +339,17 @@ namespace ErlangGod {
             timeout++
         }
     }
-    //% block="From data Object things state %state"
+    //% block="From data Object things ID"
     //% state.fieldEditor="gridpicker"
     //% state.fieldOptions.columns=3
     //% group="Learn"
-    export function thingsData(state: ThingsState): number {
-        if (DataBuff[0] == 9) {
-            switch (state) {
-                case ThingsState.ID:
-                    return DataBuff[1]
-                case ThingsState.X:
-                    return DataBuff[2]
-                case ThingsState.Y:
-                    return DataBuff[3]
-                case ThingsState.W:
-                    return DataBuff[4]
-                case ThingsState.H:
-                    return DataBuff[5]
-                case ThingsState.Confidence:
-                    return DataBuff[6]
-                case ThingsState.Thingsorder:
-                    return DataBuff[7]
-                case ThingsState.ThingsTotalNum:
-                    return DataBuff[8]
-                default:
-                    return 0;
-            }
+    export function thingsData(): number {
+        if (DataBuff[0] == 10) {
+            return DataBuff[1]
         }
-        else
+        else{
             return null
+        }
+            
     }
 }
