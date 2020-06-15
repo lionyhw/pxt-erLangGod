@@ -102,6 +102,33 @@ namespace ErlangGod {
         //% block="Color order"
         Colororder = 8
     }
+            /**
+    * Status List of Color
+    */
+    export enum ColorLs {
+        //% block="black"
+        black = 1,
+        //% block="blue"
+        blue = 2,
+        //% block="brown"
+        brown = 3,
+        //% block="green"
+        green = 4,
+        //% block="orange"
+        orange = 5,
+        //% block="pink"
+        pink = 6,
+        //% block="purple"
+        purple = 7,
+        //% block="red"
+        red = 8,
+        //% block="rose"
+        rose = 9,
+        //% block="white"
+        white = 10,
+        //% block="yellow"
+        yellow = 11
+    }
 
     export enum LineState {
         //% block="angel"
@@ -172,21 +199,29 @@ namespace ErlangGod {
         if (DataBuff[0] == 7) {
             switch (state) {
                 case BallState.Color:
-                    return (DataBuff[1])
+                    return DataBuff[1]
+                    break
                 case BallState.X:
-                    return (DataBuff[2]);
+                    return DataBuff[2]
+                    break
                 case BallState.Y:
-                    return (DataBuff[3]);
+                    return DataBuff[3]
+                    break
                 case BallState.W:
-                    return (DataBuff[4]);
+                    return DataBuff[4]
+                    break
                 case BallState.H:
-                    return (DataBuff[5]);
+                    return DataBuff[5]
+                    break
                 case BallState.Confidence:
-                    return (DataBuff[6]);
+                    return DataBuff[6]
+                    break
                 case BallState.BallTotalNum:
-                    return (DataBuff[7]);
+                    return DataBuff[7]
+                    break
                 case BallState.Ballorder:
-                    return (DataBuff[8]);
+                    return DataBuff[8]
+                    break
                 default:
                     return 0;
             }
@@ -314,6 +349,59 @@ namespace ErlangGod {
         else
             return null
     }
+    //% block="From data Color is %state"
+    //% state.fieldEditor="gridpicker"
+    //% group="Color"
+    export function colorCheck(state: ColorLs): boolean {
+         switch (state) {
+                case ColorLs.black:
+                    return ColorLs.black == DataBuff[1]
+                    break
+                case ColorLs.blue:
+                    return ColorLs.blue == DataBuff[1]
+                    break
+                case ColorLs.brown:
+                    return ColorLs.brown == DataBuff[1]
+                    break
+                case ColorLs.green:
+                    return ColorLs.green == DataBuff[1]
+                    break
+                case ColorLs.orange:
+                    return ColorLs.orange == DataBuff[1]
+                    break
+                case ColorLs.pink:
+                    return ColorLs.pink == DataBuff[1]
+                    break
+                case ColorLs.purple:
+                    return ColorLs.purple == DataBuff[1]
+                    break
+                case ColorLs.red:
+                    return ColorLs.red == DataBuff[1]
+                    break
+                case ColorLs.rose:
+                    return ColorLs.rose == DataBuff[1]
+                    break
+                case ColorLs.white:
+                    return ColorLs.white == DataBuff[1]
+                    break
+                case ColorLs.yellow:
+                    return ColorLs.yellow == DataBuff[1]
+                    break
+                default:
+                    return false
+            }
+    }
+    //% block="From data Color Name"
+    //% state.fieldEditor="gridpicker"
+    //% group="Color"
+    export function colorName(): string {
+        if(DataBuff[0]==1){
+            return ColorList[DataBuff[1]-1]
+        }
+        else{
+            return "No Color"
+        }
+    }
     //% block="From data Object color state %state"
     //% group="Color"
     export function colorData(state: ColorState): number {
@@ -341,17 +429,7 @@ namespace ErlangGod {
             return null
         }
     }
-    //% block="From data Color Name"
-    //% state.fieldEditor="gridpicker"
-    //% group="Color"
-    export function colorName(): string {
-        if(DataBuff[0]==1){
-            return ColorList[DataBuff[1]-1]
-        }
-        else{
-            return "No Color"
-        }
-    }
+
     //% block="learn Things ID %thingsID"
     //% group="Learn"
     export function learnThings(thingsID: number): void {
