@@ -248,21 +248,28 @@ namespace ErlangGod {
         if (DataBuff[0] == 6) {
             switch (state) {
                 case FaceState.X:
-                    return (DataBuff[2]);
+                    return DataBuff[2]
+                    break
                 case FaceState.Y:
-                    return (DataBuff[3]);
+                    return DataBuff[3]
+                    break
                 case FaceState.W:
-                    return (DataBuff[4]);
+                    return DataBuff[4]
+                    break
                 case FaceState.H:
-                    return (DataBuff[5]);
+                    return DataBuff[5]
+                    break
                 case FaceState.Confidence:
-                    return (DataBuff[6]);
+                    return DataBuff[6]
+                    break
                 case FaceState.FaceTotalNum:
-                    return (DataBuff[7]);
+                    return DataBuff[7]
+                    break
                 case FaceState.Faceorder:
-                    return (DataBuff[8]);
+                    return DataBuff[8]
+                    break
                 default:
-                    return 0;
+                    return null
             }
         }
         else {
@@ -275,12 +282,16 @@ namespace ErlangGod {
         switch (DataBuff[0]) {
             case 2:
                 return NumCardlabels[DataBuff[1]-1]
+                break
             case 3:
                 return LetterCardlabels[DataBuff[1]-1]
+                break
             case 4:
                 return TrafficCardlabels[DataBuff[1]-1]
+                break
             case 5:
                 return OtherCardlabels[DataBuff[1]-1]
+                break
             default:
                 return "NO Card"
         }
@@ -293,21 +304,28 @@ namespace ErlangGod {
         if (DataBuff[0] == 2 || DataBuff[0] == 3 || DataBuff[0] == 4 || DataBuff[0] == 5) {
             switch (state) {
                 case CardState.X:
-                    return (DataBuff[2]);
+                    return DataBuff[2]
+                    break
                 case CardState.Y:
-                    return (DataBuff[3]);
+                    return DataBuff[3]
+                    break
                 case CardState.W:
-                    return (DataBuff[4]);
+                    return DataBuff[4]
+                    break
                 case CardState.H:
-                    return (DataBuff[5]);
+                    return DataBuff[5]
+                    break
                 case CardState.Confidence:
-                    return (DataBuff[6]);
+                    return DataBuff[6]
+                    break
                 case CardState.CardTotalNum:
-                    return (DataBuff[7]);
+                    return DataBuff[7]
+                    break
                 case CardState.Cardorder:
-                    return (DataBuff[8]);
+                    return DataBuff[8]
+                    break
                 default:
-                    return 0;
+                    return null
             }
         }
         else
@@ -409,20 +427,27 @@ namespace ErlangGod {
             switch (state) {
                 case ColorState.X:
                     return DataBuff[2]
+                    break
                 case ColorState.Y:
                     return DataBuff[3]
+                    break
                 case ColorState.W:
                     return DataBuff[4]
+                    break
                 case ColorState.H:
                     return DataBuff[5]
+                    break
                 case ColorState.Confidence:
                     return DataBuff[6]
+                    break
                 case ColorState.ColorTotalNum:
                     return DataBuff[7]
+                    break
                 case ColorState.Colororder:
                     return DataBuff[8]
+                    break
                 default:
-                    return 0
+                    return null
             }
         }
         else {
