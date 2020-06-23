@@ -83,7 +83,7 @@ namespace ErlangGod {
         //% block="Card order"
         Cardorder = 8
     }
-        /**
+    /**
     * Status List of Color
     */
     export enum ColorState {
@@ -166,23 +166,23 @@ namespace ErlangGod {
     let ColorList = ["black", "blue", "brown", "green", "orange", "pink", "purple", "red", "rose", "white", "yellow"]
 
     //% block="Init model IIC Port"
-    //% group="Basics"
+    //% group="Basics" weight=1
     export function initModel():void{
         
     }
     //% block="Enable function | func1 %fun1 ||func2 %fun2|func3 %fun3"
     //% expandableArgumentMode="enabled"
-    //% group="Basics"
+    //% group="Basics" weight=2
     export function initfunc(fun1: FuncList, fun2: FuncList = 0, fun3: FuncList=0):void{
 
     }
     //% block="Get once data from ElangGod"
-    //% group="Basics"
+    //% group="Basics" weight=3
     export function cameraData(): void {
         DataBuff = pins.i2cReadBuffer(CameraAdd, 9)
     }
     //% block="Recognize the ball"
-    //% group="Ball"
+    //% group="Ball" weight=5
     export function checkBall(): boolean {
         if (DataBuff[0] == 7) {
             return true
@@ -274,26 +274,6 @@ namespace ErlangGod {
         }
         else {
             return null
-        }
-    }
-    //% block="From data Object Card Name"
-    //% group="Card"
-    export function cardName(state: LineList): string {
-        switch (DataBuff[0]) {
-            case 2:
-                return NumCardlabels[DataBuff[1]-1]
-                break
-            case 3:
-                return LetterCardlabels[DataBuff[1]-1]
-                break
-            case 4:
-                return TrafficCardlabels[DataBuff[1]-1]
-                break
-            case 5:
-                return OtherCardlabels[DataBuff[1]-1]
-                break
-            default:
-                return "NO Card"
         }
     }
     //% block="From data Object Card state %state"
