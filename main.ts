@@ -27,7 +27,7 @@ namespace ErlangGod {
     /**
     * Status List of Ball
     */
-    export enum BallState {
+    export enum Ballstatus {
         //% block="Color"
         Color = 1,
         //% block="X"
@@ -48,7 +48,7 @@ namespace ErlangGod {
     /**
     * Status List of Face
     */
-    export enum FaceState {
+    export enum Facestatus {
         //% block="X"
         X = 2,
         //% block="Y"
@@ -67,7 +67,7 @@ namespace ErlangGod {
     /**
     * Status List of Card
     */
-    export enum CardState {
+    export enum Cardstatus {
         //% block="X"
         X = 2,
         //% block="Y"
@@ -86,7 +86,7 @@ namespace ErlangGod {
     /**
     * Status List of Color
     */
-    export enum ColorState {
+    export enum Colorstatus {
         //% block="X"
         X = 2,
         //% block="Y"
@@ -102,7 +102,7 @@ namespace ErlangGod {
         //% block="Color order"
         Colororder = 8
     }
-            /**
+    /**
     * Status List of Color
     */
     export enum ColorLs {
@@ -130,7 +130,7 @@ namespace ErlangGod {
         yellow = 11
     }
 
-    export enum LineState {
+    export enum Linestatus {
         //% block="angel"
         angel = 1,
         //% block="width"
@@ -155,6 +155,28 @@ namespace ErlangGod {
         intersection = 6,
         //% block="no road"
         no_road = 8
+    }
+    export enum numberCards{
+        //% block="0"
+        zero = 0,
+        //% block="1"
+        one = 1,
+        //% block="2"
+        two = 2,
+        //% block="3"
+        three = 3,
+        //% block="4"
+        four = 4,
+        //% block="5"
+        five = 5,
+        //% block="6"
+        six = 6,
+        //% block="7"
+        seven = 7,
+        //% block="8"
+        eight = 8,
+        //% block="9"
+        nine = 9
     }
     let NumCardlabels = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9"]
     let LetterCardlabels = ["A", "B", "C", "D", "E", "F", "G", "H",
@@ -191,35 +213,35 @@ namespace ErlangGod {
             return false
         }
     }
-    //% block="From data Object Ball state %state"
-    //% state.fieldEditor="gridpicker"
-    //% state.fieldOptions.columns=3
+    //% block="From data Object Ball status %status"
+    //% status.fieldEditor="gridpicker"
+    //% status.fieldOptions.columns=3
     //% group="Ball"
-    export function ballData(state: BallState): number {
+    export function ballData(status: Ballstatus): number {
         if (DataBuff[0] == 7) {
-            switch (state) {
-                case BallState.Color:
+            switch (status) {
+                case Ballstatus.Color:
                     return DataBuff[1]
                     break
-                case BallState.X:
+                case Ballstatus.X:
                     return DataBuff[2]
                     break
-                case BallState.Y:
+                case Ballstatus.Y:
                     return DataBuff[3]
                     break
-                case BallState.W:
+                case Ballstatus.W:
                     return DataBuff[4]
                     break
-                case BallState.H:
+                case Ballstatus.H:
                     return DataBuff[5]
                     break
-                case BallState.Confidence:
+                case Ballstatus.Confidence:
                     return DataBuff[6]
                     break
-                case BallState.BallTotalNum:
+                case Ballstatus.BallTotalNum:
                     return DataBuff[7]
                     break
-                case BallState.Ballorder:
+                case Ballstatus.Ballorder:
                     return DataBuff[8]
                     break
                 default:
@@ -240,32 +262,32 @@ namespace ErlangGod {
             return false
         }
     }
-    //% block="From data Object Face state %state"
-    //% state.fieldEditor="gridpicker"
-    //% state.fieldOptions.columns=3
+    //% block="From data Object Face status %status"
+    //% status.fieldEditor="gridpicker"
+    //% status.fieldOptions.columns=3
     //% group="Face"
-    export function faceData(state: FaceState): number {
+    export function faceData(status: Facestatus): number {
         if (DataBuff[0] == 6) {
-            switch (state) {
-                case FaceState.X:
+            switch (status) {
+                case Facestatus.X:
                     return DataBuff[2]
                     break
-                case FaceState.Y:
+                case Facestatus.Y:
                     return DataBuff[3]
                     break
-                case FaceState.W:
+                case Facestatus.W:
                     return DataBuff[4]
                     break
-                case FaceState.H:
+                case Facestatus.H:
                     return DataBuff[5]
                     break
-                case FaceState.Confidence:
+                case Facestatus.Confidence:
                     return DataBuff[6]
                     break
-                case FaceState.FaceTotalNum:
+                case Facestatus.FaceTotalNum:
                     return DataBuff[7]
                     break
-                case FaceState.Faceorder:
+                case Facestatus.Faceorder:
                     return DataBuff[8]
                     break
                 default:
@@ -276,32 +298,73 @@ namespace ErlangGod {
             return null
         }
     }
-    //% block="From data Object Card state %state"
-    //% state.fieldEditor="gridpicker"
-    //% state.fieldOptions.columns=3
+
+    //% block="Recognize the number Card %status"
+    //% status.fieldEditor="gridpicker"
+    //% status.fieldOptions.columns=3
     //% group="Card"
-    export function CardData(state: CardState): number {
+    export function numberCard(status:numberCards): boolean{
+        switch (status) {
+            case numberCards.zero:
+                return numberCards.zero == DataBuff[1]
+                break
+            case numberCards.one:
+                return numberCards.one == DataBuff[1]
+                break
+            case numberCards.two:
+                return numberCards.two == DataBuff[1]
+                break
+            case numberCards.three:
+                return numberCards.three == DataBuff[1]
+                break
+            case numberCards.four:
+                return numberCards.four == DataBuff[1]
+                break
+            case numberCards.five:
+                return numberCards.five == DataBuff[1]
+                break
+            case numberCards.six:
+                return numberCards.six == DataBuff[1]
+                break
+            case numberCards.seven:
+                return numberCards.seven == DataBuff[1]
+                break
+            case numberCards.eight:
+                return numberCards.eight == DataBuff[1]
+                break
+            case numberCards.nine:
+                return numberCards.nine == DataBuff[1]
+                break
+            default:
+                return false
+        }
+    }
+    //% block="From data Object Card status %status"
+    //% status.fieldEditor="gridpicker"
+    //% status.fieldOptions.columns=3
+    //% group="Card"
+    export function CardData(status: Cardstatus): number {
         if (DataBuff[0] == 2 || DataBuff[0] == 3 || DataBuff[0] == 4 || DataBuff[0] == 5) {
-            switch (state) {
-                case CardState.X:
+            switch (status) {
+                case Cardstatus.X:
                     return DataBuff[2]
                     break
-                case CardState.Y:
+                case Cardstatus.Y:
                     return DataBuff[3]
                     break
-                case CardState.W:
+                case Cardstatus.W:
                     return DataBuff[4]
                     break
-                case CardState.H:
+                case Cardstatus.H:
                     return DataBuff[5]
                     break
-                case CardState.Confidence:
+                case Cardstatus.Confidence:
                     return DataBuff[6]
                     break
-                case CardState.CardTotalNum:
+                case Cardstatus.CardTotalNum:
                     return DataBuff[7]
                     break
-                case CardState.Cardorder:
+                case Cardstatus.Cardorder:
                     return DataBuff[8]
                     break
                 default:
@@ -311,13 +374,13 @@ namespace ErlangGod {
         else
             return null
     }
-    //% block="From data Object Line tracking is %state"
-    //% state.fieldEditor="gridpicker"
-    //% state.fieldOptions.columns=3
+    //% block="From data Object Line tracking is %status"
+    //% status.fieldEditor="gridpicker"
+    //% status.fieldOptions.columns=3
     //% group="Tracking"
-    export function lineTracking(state: LineList): boolean {
+    export function lineTracking(status: LineList): boolean {
         if (DataBuff[0] == 8) {
-            if (DataBuff[4] == state) {
+            if (DataBuff[4] == status) {
                 return true
             }
             else {
@@ -327,18 +390,18 @@ namespace ErlangGod {
         else
             return false
     }
-    //% block="From data Object tracking state %state"
-    //% state.fieldEditor="gridpicker"
-    //% state.fieldOptions.columns=3
+    //% block="From data Object tracking status %status"
+    //% status.fieldEditor="gridpicker"
+    //% status.fieldOptions.columns=3
     //% group="Tracking"
-    export function trackingData(state: LineState): number {
+    export function trackingData(status: Linestatus): number {
         if (DataBuff[0] == 8) {
-            switch (state) {
-                case LineState.angel:
+            switch (status) {
+                case Linestatus.angel:
                     return (DataBuff[2]);
-                case LineState.len:
+                case Linestatus.len:
                     return (DataBuff[3]);
-                case LineState.width:
+                case Linestatus.width:
                     return (DataBuff[4]);
                 default:
                     return 0;
@@ -347,11 +410,11 @@ namespace ErlangGod {
         else
             return null
     }
-    //% block="From data Color is %state"
-    //% state.fieldEditor="gridpicker"
+    //% block="From data Color is %status"
+    //% status.fieldEditor="gridpicker"
     //% group="Color"
-    export function colorCheck(state: ColorLs): boolean {
-         switch (state) {
+    export function colorCheck(status: ColorLs): boolean {
+         switch (status) {
                 case ColorLs.black:
                     return ColorLs.black == DataBuff[1]
                     break
@@ -389,41 +452,30 @@ namespace ErlangGod {
                     return false
             }
     }
-    //% block="From data Color Name"
-    //% state.fieldEditor="gridpicker"
+    //% block="From data Object color status %status"
     //% group="Color"
-    export function colorName(): string {
-        if(DataBuff[0]==1){
-            return ColorList[DataBuff[1]-1]
-        }
-        else{
-            return "No Color"
-        }
-    }
-    //% block="From data Object color state %state"
-    //% group="Color"
-    export function colorData(state: ColorState): number {
+    export function colorData(status: Colorstatus): number {
         if (DataBuff[0] == 1) {
-            switch (state) {
-                case ColorState.X:
+            switch (status) {
+                case Colorstatus.X:
                     return DataBuff[2]
                     break
-                case ColorState.Y:
+                case Colorstatus.Y:
                     return DataBuff[3]
                     break
-                case ColorState.W:
+                case Colorstatus.W:
                     return DataBuff[4]
                     break
-                case ColorState.H:
+                case Colorstatus.H:
                     return DataBuff[5]
                     break
-                case ColorState.Confidence:
+                case Colorstatus.Confidence:
                     return DataBuff[6]
                     break
-                case ColorState.ColorTotalNum:
+                case Colorstatus.ColorTotalNum:
                     return DataBuff[7]
                     break
-                case ColorState.Colororder:
+                case Colorstatus.Colororder:
                     return DataBuff[8]
                     break
                 default:
@@ -452,8 +504,8 @@ namespace ErlangGod {
         }
     }
     //% block="From data Object things ID"
-    //% state.fieldEditor="gridpicker"
-    //% state.fieldOptions.columns=3
+    //% status.fieldEditor="gridpicker"
+    //% status.fieldOptions.columns=3
     //% group="Learn"
     export function thingsData(): number {
         if (DataBuff[0] == 10) {
