@@ -178,6 +178,31 @@ namespace ErlangGod {
         //% block="9"
         nine = 9
     }
+    export enum letterCards{
+        //% block="A"
+        A = 0,
+        //% block="B"
+        B = 1,
+        //% block="C"
+        C = 2,
+        //% block="D"
+        D = 3,
+        //% block="4"
+        four = 4,
+        //% block="5"
+        five = 5,
+        //% block="6"
+        six = 6,
+        //% block="7"
+        seven = 7,
+        //% block="8"
+        eight = 8,
+        //% block="9"
+        nine = 9
+    }
+    export enum otherCards{
+
+    }
     let NumCardlabels = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9"]
     let LetterCardlabels = ["A", "B", "C", "D", "E", "F", "G", "H",
         "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"]
@@ -304,6 +329,86 @@ namespace ErlangGod {
     //% status.fieldOptions.columns=3
     //% group="Card"
     export function numberCard(status:numberCards): boolean{
+        switch (status) {
+            case numberCards.zero:
+                return numberCards.zero == DataBuff[1]
+                break
+            case numberCards.one:
+                return numberCards.one == DataBuff[1]
+                break
+            case numberCards.two:
+                return numberCards.two == DataBuff[1]
+                break
+            case numberCards.three:
+                return numberCards.three == DataBuff[1]
+                break
+            case numberCards.four:
+                return numberCards.four == DataBuff[1]
+                break
+            case numberCards.five:
+                return numberCards.five == DataBuff[1]
+                break
+            case numberCards.six:
+                return numberCards.six == DataBuff[1]
+                break
+            case numberCards.seven:
+                return numberCards.seven == DataBuff[1]
+                break
+            case numberCards.eight:
+                return numberCards.eight == DataBuff[1]
+                break
+            case numberCards.nine:
+                return numberCards.nine == DataBuff[1]
+                break
+            default:
+                return false
+        }
+    }
+    //% block="Recognize the letter Card %status"
+    //% status.fieldEditor="gridpicker"
+    //% status.fieldOptions.columns=3
+    //% group="Card"
+    export function letterCard(status:numberCards): boolean{
+        switch (status) {
+            case numberCards.zero:
+                return numberCards.zero == DataBuff[1]
+                break
+            case numberCards.one:
+                return numberCards.one == DataBuff[1]
+                break
+            case numberCards.two:
+                return numberCards.two == DataBuff[1]
+                break
+            case numberCards.three:
+                return numberCards.three == DataBuff[1]
+                break
+            case numberCards.four:
+                return numberCards.four == DataBuff[1]
+                break
+            case numberCards.five:
+                return numberCards.five == DataBuff[1]
+                break
+            case numberCards.six:
+                return numberCards.six == DataBuff[1]
+                break
+            case numberCards.seven:
+                return numberCards.seven == DataBuff[1]
+                break
+            case numberCards.eight:
+                return numberCards.eight == DataBuff[1]
+                break
+            case numberCards.nine:
+                return numberCards.nine == DataBuff[1]
+                break
+            default:
+                return false
+        }
+    }
+    //% block="Recognize the other Card %status"
+    //% status.fieldEditor="gridpicker"
+    //% status.fieldOptions.columns=3
+    //% group="Card"
+    export function otherCard(status:numberCards): boolean{
         switch (status) {
             case numberCards.zero:
                 return numberCards.zero == DataBuff[1]
